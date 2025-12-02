@@ -2,7 +2,7 @@
 Theme Name: AMPLite
 Author: Gemini
 Description: A lightweight, AMP-ready theme with Dark Mode and News Ticker.
-Version: 1.8
+Version: 2.0
 */
 
 /* --- Reset & Base --- */
@@ -14,7 +14,7 @@ Version: 1.8
     --bg-card: #ffffff;
     --border: #e5e7eb;
     --bg-input: #f3f4f6;
-    --bg-overlay: rgba(255, 255, 255, 0.95); /* Light mode overlay */
+    --bg-overlay: rgba(255, 255, 255, 0.95);
 }
 
 body.dark {
@@ -25,7 +25,7 @@ body.dark {
     --bg-card: #1f2937;
     --border: #374151;
     --bg-input: #374151;
-    --bg-overlay: rgba(17, 24, 39, 0.95); /* Dark mode overlay */
+    --bg-overlay: rgba(17, 24, 39, 0.95);
 }
 
 * { box-sizing: border-box; }
@@ -69,134 +69,63 @@ header { background: var(--bg-card); border-bottom: 1px solid var(--border); pad
 .logo .custom-logo { max-height: 50px; width: auto; }
 .logo span { color: var(--primary); }
 
-/* Nav Wrapper (Groups Menu + Search) */
 .nav-wrapper { display: flex; align-items: center; gap: 1.5rem; }
 .main-nav ul { display: flex; gap: 1.5rem; list-style: none; padding: 0; margin: 0; }
 
-/* Header Search Button */
 #header-search-toggle {
-    background: transparent !important; 
-    border: none !important; 
-    cursor: pointer;
-    font-size: 1.2rem; 
-    color: var(--text-muted);
-    padding: 0.5rem; 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    transition: color 0.2s; 
-    border-radius: 50%;
-    box-shadow: none !important;
+    background: transparent !important; border: none !important; cursor: pointer;
+    font-size: 1.2rem; color: var(--text-muted); padding: 0.5rem; 
+    display: flex; align-items: center; justify-content: center;
+    transition: color 0.2s; border-radius: 50%; box-shadow: none !important;
 }
 #header-search-toggle:hover { color: var(--primary); background: var(--bg-input) !important; }
 
 /* Full Screen Search Overlay */
 #search-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: var(--bg-overlay); /* Adapts to theme */
-    z-index: 2000;
-    display: none; 
-    align-items: center; justify-content: center;
-    backdrop-filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    background: var(--bg-overlay); z-index: 2000;
+    display: none; align-items: center; justify-content: center;
+    backdrop-filter: blur(8px); opacity: 0; transition: opacity 0.3s ease;
 }
 #search-overlay.active { display: flex; opacity: 1; }
-
-#search-overlay form { 
-    position: relative; 
-    width: 100%; 
-    max-width: 900px; /* Wider for desktop */
-    margin: 0 auto;
-    padding: 0 2rem;
-}
+#search-overlay form { position: relative; width: 100%; max-width: 900px; margin: 0 auto; padding: 0 2rem; }
 #search-overlay input[type="search"] { 
-    background: transparent; 
-    border: none; 
-    border-bottom: 2px solid var(--border); 
-    color: var(--text-main); /* Adapts to text color */
-    font-size: 3rem; 
-    padding: 1rem 0; 
-    border-radius: 0; 
-    font-weight: bold; 
-    margin-bottom: 0;
-    text-align: center; /* Centers the typing */
-    box-shadow: none !important;
-    width: 100%;
+    background: transparent; border: none; border-bottom: 2px solid var(--border); 
+    color: var(--text-main); font-size: 3rem; padding: 1rem 0; border-radius: 0; 
+    font-weight: bold; margin-bottom: 0; text-align: center; box-shadow: none !important; width: 100%;
 }
 #search-overlay input[type="search"]:focus { border-color: var(--primary); }
 #search-overlay input[type="search"]::placeholder { color: var(--text-muted); opacity: 0.5; }
-
 #search-close {
-    position: absolute; top: 2rem; right: 2rem;
-    background: none; border: none; color: var(--text-main); 
-    font-size: 3rem; cursor: pointer; transition: transform 0.2s;
-    line-height: 1;
-    padding: 0.5rem;
+    position: absolute; top: 2rem; right: 2rem; background: none; border: none; 
+    color: var(--text-main); font-size: 3rem; cursor: pointer; transition: transform 0.2s; 
+    line-height: 1; padding: 0.5rem;
 }
 #search-close:hover { transform: scale(1.1); color: var(--primary); }
 
 /* --- Typography Options --- */
-.font-linux { 
-    font-family: 'Courier New', Courier, monospace; 
-    font-weight: 700; 
-    letter-spacing: -0.5px;
-    text-transform: lowercase; 
-}
+.font-linux { font-family: 'Courier New', Courier, monospace; font-weight: 700; letter-spacing: -0.5px; text-transform: lowercase; }
 .font-linux::before { content: "> "; color: var(--primary); }
-
-.font-modern {
-    font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.font-elegant {
-    font-family: Georgia, serif;
-    font-weight: 400;
-    font-style: italic;
-}
+.font-modern { font-family: system-ui, -apple-system, sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; }
+.font-elegant { font-family: Georgia, serif; font-weight: 400; font-style: italic; }
 
 /* --- Global Form Styles --- */
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], textarea, select {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--border);
-    background: var(--bg-input);
-    color: var(--text-main);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.2s ease;
-    margin-bottom: 1rem;
-    box-sizing: border-box;
+    width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border);
+    background: var(--bg-input); color: var(--text-main); border-radius: 0.5rem;
+    font-size: 1rem; outline: none; transition: all 0.2s ease; margin-bottom: 1rem; box-sizing: border-box;
 }
-
 input:focus, textarea:focus, select:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-    background: var(--bg-card);
+    border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); background: var(--bg-card);
 }
-
 input[type="submit"], button.submit {
-    background: var(--primary);
-    color: white;
-    border: none;
-    padding: 0.75rem 2rem;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background 0.2s;
-    display: inline-block;
-    width: auto;
+    background: var(--primary); color: white; border: none; padding: 0.75rem 2rem;
+    border-radius: 0.5rem; cursor: pointer; font-weight: 600; font-size: 1rem;
+    transition: background 0.2s; display: inline-block; width: auto;
 }
-input[type="submit"]:hover, button.submit:hover {
-    background: #1d4ed8;
-}
+input[type="submit"]:hover, button.submit:hover { background: #1d4ed8; }
 
-/* --- Layout & Grid --- */
+/* --- Layout --- */
 .main-layout { display: flex; gap: 3rem; padding: 3rem 0; flex-wrap: wrap; }
 .content-area { flex: 2; min-width: 300px; }
 .sidebar { flex: 1; min-width: 250px; }
@@ -216,93 +145,91 @@ input[type="submit"]:hover, button.submit:hover {
 .entry-content h2, .entry-content h3 { margin-top: 2rem; margin-bottom: 1rem; font-weight: bold; color: var(--text-main); }
 .entry-content p { margin-bottom: 1.5rem; }
 .entry-content ul { list-style: disc; margin-left: 2rem; margin-bottom: 1.5rem; }
-
-/* --- Highlighted Quotes --- */
 .entry-content blockquote { 
-    background: var(--bg-input);
-    border-left: 5px solid var(--primary);
-    margin: 1.5rem 0;
-    padding: 1.5rem 1.5rem 1.5rem 3rem;
-    position: relative;
-    border-radius: 0 0.5rem 0.5rem 0;
+    background: var(--bg-input); border-left: 5px solid var(--primary); margin: 1.5rem 0;
+    padding: 1.5rem 1.5rem 1.5rem 3rem; position: relative; border-radius: 0 0.5rem 0.5rem 0;
 }
-.entry-content blockquote p {
-    font-family: 'Georgia', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--text-main);
-    margin: 0;
-}
+.entry-content blockquote p { font-family: 'Georgia', serif; font-size: 1.1rem; font-style: italic; color: var(--text-main); margin: 0; }
 .entry-content blockquote::before {
-    content: "\201C"; /* Left Double Quote */
-    font-family: serif;
-    position: absolute;
-    left: 10px;
-    top: -10px;
-    font-size: 4rem;
-    color: var(--primary);
-    opacity: 0.3;
+    content: "\201C"; font-family: serif; position: absolute; left: 10px; top: -10px;
+    font-size: 4rem; color: var(--primary); opacity: 0.3;
 }
 
-/* --- Code Blocks & Copy Button --- */
-.code-wrapper {
-    position: relative;
-    margin-bottom: 1.5rem;
-}
+/* --- Code Blocks --- */
+.code-wrapper { position: relative; margin-bottom: 1.5rem; }
 .code-wrapper pre {
-    background: #1e293b; /* Dark Slate */
-    color: #f8fafc;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    margin-bottom: 0;
-    font-family: 'Courier New', Courier, monospace;
+    background: #1e293b; color: #f8fafc; padding: 1.5rem; border-radius: 0.5rem;
+    overflow-x: auto; margin-bottom: 0; font-family: 'Courier New', Courier, monospace;
 }
 .copy-btn {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
-    padding: 0.25rem 0.5rem;
-    border-radius: 0.25rem;
-    font-size: 0.75rem;
-    cursor: pointer;
-    transition: all 0.2s;
-    opacity: 0;
-    z-index: 10;
+    position: absolute; top: 0.5rem; right: 0.5rem; background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem; font-size: 0.75rem; cursor: pointer; transition: all 0.2s; opacity: 0; z-index: 10;
 }
 .code-wrapper:hover .copy-btn { opacity: 1; }
 .copy-btn:hover { background: var(--primary); border-color: var(--primary); }
 
-/* --- Tags (Fresh Look) --- */
-.entry-footer { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
-.tags-links { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
-.tags-links a {
-    display: inline-block;
-    background: var(--bg-input);
-    color: var(--text-muted);
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px; /* Pill shape */
-    font-size: 0.85rem;
-    font-weight: 500;
-    transition: all 0.2s;
-}
-.tags-links a:hover {
-    background: var(--primary);
-    color: white;
-}
-
-/* --- Comments Section --- */
+/* --- Comments Section (Interactive Tree Structure) --- */
 .comments-area { margin-top: 3rem; background: var(--bg-card); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--border); }
 .comments-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
 .comment-list { list-style: none; padding: 0; margin: 0; }
-.comment-body { margin-bottom: 2rem; display: flex; gap: 1rem; }
+
+.comment-list li {
+    position: relative; /* Essential for toggle button positioning */
+}
+
+/* Comment Body */
+.comment-body { 
+    margin-bottom: 2rem; 
+    display: flex; 
+    gap: 1rem; 
+    position: relative;
+    background: var(--bg-card);
+    z-index: 2; /* Keep content above lines */
+}
 .comment-author .avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
 .comment-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
 .comment-content p { margin: 0.5rem 0; }
+.reply { margin-left: auto; }
 .reply a { font-size: 0.85rem; font-weight: bold; color: var(--primary); }
+
+/* Tree Hierarchy Lines */
+.comment-list .children {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 2rem; /* Indentation */
+    border-left: 2px solid var(--border); /* Vertical Tree Line */
+    position: relative;
+}
+
+/* Toggle Button Styling (+ / -) */
+.comment-toggle {
+    position: absolute;
+    left: -29px; /* Align precisely on the border line */
+    top: 15px;
+    width: 20px;
+    height: 20px;
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    color: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1;
+    z-index: 10;
+    padding: 0;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+.comment-toggle:hover { background: var(--primary); color: white; border-color: var(--primary); }
+
+/* Hidden state for collapsed replies */
+.children.hidden { display: none; }
+
+/* Comment Form Alignment */
 .comment-form p { margin-bottom: 1rem; }
 .comment-form label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
 .comment-form-author, .comment-form-email, .comment-form-url { width: 100%; }
@@ -337,7 +264,93 @@ footer { background: var(--bg-card); color: var(--text-main); padding: 4rem 0; m
     #search-overlay input[type="search"] { font-size: 1.5rem; }
     
     /* Hide Dark Mode Toggle on Mobile */
-    #theme-toggle {
-        display: none !important;
+    #theme-toggle { display: none !important; }
+}
+
+
+2. functions.php (Logic & Features)
+
+Crucial Change: I've added a pre_get_posts function (amplite_home_pagesize) to strictly limit the homepage to 10 posts.
+
+<?php
+function amplite_setup() {
+    add_theme_support('title-tag');
+    add_theme_support('post-thumbnails');
+    
+    // Updated: Flexible Custom Logo support for better responsiveness
+    add_theme_support('custom-logo', array(
+        'height'      => 100, // Suggested base height, but flexible
+        'width'       => 400, // Suggested base width, but flexible
+        'flex-height' => true, // Allows cropping to any height
+        'flex-width'  => true, // Allows cropping to any width
+        'header-text' => array('site-title', 'site-description'),
+    ));
+    
+    register_nav_menus(array('primary' => __('Primary Menu', 'amplite')));
+}
+add_action('after_setup_theme', 'amplite_setup');
+
+// Force 10 Posts on Homepage
+function amplite_home_pagesize( $query ) {
+    if ( ! is_admin() && $query->is_main_query() && $query->is_home() ) {
+        $query->set( 'posts_per_page', 10 );
     }
 }
+add_action( 'pre_get_posts', 'amplite_home_pagesize' );
+
+function amplite_widgets_init() {
+    // Sidebar
+    register_sidebar(array(
+        'name'          => 'Sidebar',
+        'id'            => 'sidebar-1',
+        'before_widget' => '<div class="widget bg-white dark:bg-gray-800 p-6 rounded-lg border border-gray-200 dark:border-gray-700 mb-6">',
+        'after_widget'  => '</div>',
+        // Removed text-white to allow CSS variables to control color
+        'before_title'  => '<h4 class="font-bold uppercase tracking-wider mb-4 border-b border-blue-500 pb-2 inline-block">',
+        'after_title'   => '</h4>',
+    ));
+
+    // Header Right
+    register_sidebar(array(
+        'name'          => 'Header Right',
+        'id'            => 'header-right',
+        'description'   => 'Widgets for the right side of the header',
+        'before_widget' => '<div class="header-widget">',
+        'after_widget'  => '</div>',
+    ));
+
+    // Footer Columns (Removed text-white here too)
+    register_sidebar(array(
+        'name'          => 'Footer Column 1',
+        'id'            => 'footer-1',
+        'before_widget' => '<div class="footer-widget mb-6">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="text-lg font-bold mb-4">',
+        'after_title'   => '</h5>',
+    ));
+    
+    register_sidebar(array(
+        'name'          => 'Footer Column 2',
+        'id'            => 'footer-2',
+        'before_widget' => '<div class="footer-widget mb-6">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="text-lg font-bold mb-4">',
+        'after_title'   => '</h5>',
+    ));
+    
+    register_sidebar(array(
+        'name'          => 'Footer Column 3',
+        'id'            => 'footer-3',
+        'before_widget' => '<div class="footer-widget mb-6">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h5 class="text-lg font-bold mb-4">',
+        'after_title'   => '</h5>',
+    ));
+}
+add_action('widgets_init', 'amplite_widgets_init');
+
+function amplite_scripts() {
+    wp_enqueue_style('amplite-style', get_stylesheet_uri());
+}
+add_action('wp_enqueue_scripts', 'amplite_scripts');
+?>

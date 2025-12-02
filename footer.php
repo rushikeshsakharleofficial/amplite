@@ -43,9 +43,7 @@
 
     if (searchToggle) {
         searchToggle.addEventListener('click', () => {
-            // Force flex display via style if class isn't enough in some cases
             searchOverlay.style.display = 'flex';
-            // Slight delay to allow display change before opacity transition
             setTimeout(() => {
                 searchOverlay.classList.add('active');
                 if (searchInput) searchInput.focus();
@@ -55,52 +53,57 @@
     
     function closeSearch() {
         searchOverlay.classList.remove('active');
-        // Wait for transition to finish before hiding
         setTimeout(() => {
             searchOverlay.style.display = 'none';
         }, 300);
     }
 
-    if (searchClose) {
-        searchClose.addEventListener('click', closeSearch);
-    }
-    
-    // Close on Escape key
+    if (searchClose) searchClose.addEventListener('click', closeSearch);
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-            closeSearch();
-        }
+        if (e.key === 'Escape' && searchOverlay.classList.contains('active')) closeSearch();
     });
 
     // Copy to Clipboard Logic
     document.addEventListener('DOMContentLoaded', () => {
         const preBlocks = document.querySelectorAll('pre');
         preBlocks.forEach((pre) => {
-            // Check if wrapper already exists (to prevent dupes if JS runs twice)
             if (pre.parentNode.classList.contains('code-wrapper')) return;
-
-            // Create Wrapper
             const wrapper = document.createElement('div');
             wrapper.className = 'code-wrapper';
-            
-            // Insert wrapper before pre
             pre.parentNode.insertBefore(wrapper, pre);
-            // Move pre inside wrapper
             wrapper.appendChild(pre);
-
-            // Create Button
             const btn = document.createElement('button');
             btn.className = 'copy-btn';
             btn.innerText = 'Copy';
             wrapper.appendChild(btn);
-
-            // Add Click Event
             btn.addEventListener('click', () => {
-                const code = pre.innerText;
-                navigator.clipboard.writeText(code).then(() => {
+                navigator.clipboard.writeText(pre.innerText).then(() => {
                     btn.innerText = 'Copied!';
                     setTimeout(() => { btn.innerText = 'Copy'; }, 2000);
                 });
+            });
+        });
+
+        // Comment Tree Toggle Logic
+        const nestedComments = document.querySelectorAll('.comment-list .children');
+        nestedComments.forEach(childList => {
+            const parentLi = childList.parentElement;
+            if (parentLi.querySelector('.comment-toggle')) return; // Prevent dupes
+
+            const toggleBtn = document.createElement('button');
+            toggleBtn.className = 'comment-toggle';
+            toggleBtn.innerText = '-';
+            toggleBtn.setAttribute('aria-label', 'Collapse replies');
+            
+            // Insert before the nested list
+            childList.parentNode.insertBefore(toggleBtn, childList);
+
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                childList.classList.toggle('hidden');
+                const isHidden = childList.classList.contains('hidden');
+                toggleBtn.innerText = isHidden ? '+' : '-';
+                toggleBtn.setAttribute('aria-label', isHidden ? 'Expand replies' : 'Collapse replies');
             });
         });
     });
