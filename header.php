@@ -14,7 +14,7 @@
 <body <?php body_class(); ?>>
 
 <div id="news-ticker" style="display: flex;">
-    <div class="ticker-title">Latest Blogs</div>
+    <div class="ticker-title">Latest News</div>
     <div class="ticker-content">
         <div class="ticker-track">
             <?php
@@ -74,7 +74,7 @@
     <button id="search-close">×</button>
     <form role="search" method="get" class="search-form" action="<?php echo home_url( '/' ); ?>">
         <label>
-            <input type="search" class="search-field" placeholder="Type and hit enter..." value="<?php echo get_search_query(); ?>" name="s" />
+            <input type="search" class="search-field" placeholder="Type To Search..." value="<?php echo get_search_query(); ?>" name="s" />
         </label>
     </form>
 </div>
