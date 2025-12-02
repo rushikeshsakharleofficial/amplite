@@ -6,7 +6,7 @@
             <div class="footer-column"><?php dynamic_sidebar('footer-3'); ?></div>
         </div>
         
-        <div class="copyrights" style="border-top: 1px solid var(--border); margin-top: 3rem; padding-top: 1.5rem; text-align: center; font-size: 0.85rem; color: var(--text-muted);">
+        <div class="copyrights">
             &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>. All rights reserved.
         </div>
     </div>
