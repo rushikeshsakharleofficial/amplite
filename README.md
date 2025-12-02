@@ -166,12 +166,3 @@ Sidebar loads **only if widgets exist** in the Sidebar widget area.
 This theme is open-source and licensed under **GPLv2 or later**.
 
 ---
-
-If you want, I can also:
-
-✅ Generate the **full theme ZIP**
-✅ Write the `functions.php`, `style.css`, or JS files
-✅ Add GitHub-ready `README.md`
-✅ Add screenshots / badges / demo site link
-
-Would you like the **full theme source code** next?
