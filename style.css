@@ -229,7 +229,7 @@ input[type="submit"]:hover, button.submit:hover { background: #1d4ed8; }
     margin-bottom: 2rem; display: flex; gap: 1rem; position: relative; background: var(--bg-card); z-index: 2; 
 }
 .comment-author .avatar { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; }
-.comment-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem; }
+.comment-meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; }
 .comment-content p { margin: 0.5rem 0; }
 .reply { margin-left: auto; }
 .reply a { font-size: 0.85rem; font-weight: bold; color: var(--primary); }
