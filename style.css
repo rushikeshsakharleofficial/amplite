@@ -2,7 +2,7 @@
 Theme Name: AMPLite
 Author: Gemini
 Description: A lightweight, AMP-ready theme with Dark Mode and News Ticker.
-Version: 2.1
+Version: 2.2
 */
 
 /* --- Reset & Base --- */
@@ -169,11 +169,62 @@ input[type="submit"]:hover, button.submit:hover { background: #1d4ed8; }
 .code-wrapper:hover .copy-btn { opacity: 1; }
 .copy-btn:hover { background: var(--primary); border-color: var(--primary); }
 
-/* --- Comments Section --- */
-.comments-area { margin-top: 3rem; background: var(--bg-card); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--border); }
-.comments-title { font-size: 1.5rem; font-weight: bold; margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-.comment-list { list-style: none; padding: 0; margin: 0; }
+/* --- Comments Section (SPLIT BLOCKS & SEQUENCED) --- */
+.comments-area { 
+    margin-top: 3rem; 
+    /* Removed block styling from main wrapper to allow splitting */
+    background: transparent; 
+    padding: 0; 
+    border: none;
+}
+.comments-title { 
+    font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;
+}
+
+/* 1. Comment List Block */
+.comment-list { 
+    background: var(--bg-card); 
+    padding: 2rem; 
+    border-radius: 0.5rem; 
+    border: 1px solid var(--border);
+    list-style: none; /* Hide default ugly numbers */
+    margin: 0 0 2rem 0; /* Add gap below list */
+    counter-reset: comment-counter; /* Init counter */
+}
+
+/* 2. Comment Form Block (Separate) */
+.comment-respond {
+    background: var(--bg-card);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+}
+
 .comment-list li { position: relative; }
+
+/* Styling the Sequence Numbers */
+.comment-list > li {
+    counter-increment: comment-counter;
+}
+.comment-list > li::before {
+    content: counter(comment-counter); /* The number */
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    background: var(--bg-input);
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    z-index: 10;
+}
+
 .comment-body { 
     margin-bottom: 2rem; display: flex; gap: 1rem; position: relative; background: var(--bg-card); z-index: 2; 
 }
@@ -182,6 +233,8 @@ input[type="submit"]:hover, button.submit:hover { background: #1d4ed8; }
 .comment-content p { margin: 0.5rem 0; }
 .reply { margin-left: auto; }
 .reply a { font-size: 0.85rem; font-weight: bold; color: var(--primary); }
+
+/* Tree Hierarchy Lines */
 .comment-list .children {
     list-style: none; padding-left: 0; margin-left: 2rem; border-left: 2px solid var(--border); position: relative;
 }
@@ -193,6 +246,8 @@ input[type="submit"]:hover, button.submit:hover { background: #1d4ed8; }
 }
 .comment-toggle:hover { background: var(--primary); color: white; border-color: var(--primary); }
 .children.hidden { display: none; }
+
+/* Comment Form Alignment */
 .comment-form p { margin-bottom: 1rem; }
 .comment-form label { display: block; margin-bottom: 0.5rem; font-weight: 500; font-size: 0.9rem; }
 .comment-form-author, .comment-form-email, .comment-form-url { width: 100%; }
