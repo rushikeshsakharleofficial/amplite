@@ -1,127 +1,177 @@
-AMPLite WordPress Theme
+# **AMPLite WordPress Theme**
 
-AMPLite is a lightweight, high-performance WordPress theme designed for speed, readability, and modern aesthetics. It features a built-in dark mode, a dynamic news ticker, and developer-friendly code highlighting, making it perfect for tech blogs, documentation sites, and minimal magazines.
+AMPLite is a lightweight, high-performance WordPress theme designed for speed, readability, and modern aesthetics. It includes built-in dark mode, a dynamic news ticker, full-screen search, and developer-friendly code highlighting — making it perfect for tech blogs, documentation sites, and minimal magazines.
 
-<!-- Replace with actual screenshot later -->
+> **Screenshot Placeholder:**
+> *(Replace with actual screenshot later)*
 
-🚀 Features
+---
 
-⚡ Lightweight & Fast: Optimized for speed with minimal dependencies, following AMP-friendly design principles.
+## 🚀 **Features**
 
-🌗 Dark/Light Mode: Built-in theme toggler that saves user preference.
+### ⚡ Lightweight & Fast
 
-Desktop: Hover-to-reveal toggle on the side.
+* Optimized for speed with minimal dependencies
+* AMP-friendly design principles
+* Clean and efficient CSS
 
-Mobile: Always visible, touch-friendly toggle.
+### 🌗 Dark / Light Mode
 
-📰 Dynamic News Ticker: A sleek, sliding top bar displaying your latest posts. Can be dismissed by the user.
+* Built-in theme toggler (stores user preference in localStorage)
+* **Desktop:** Hover-to-reveal toggle
+* **Mobile:** Always visible button
 
-🔍 Full-Screen Search: An immersive, blurry-background search overlay accessed via a dedicated header button.
+### 📰 Dynamic News Ticker
 
-💻 Developer Focused:
+* Lightweight sliding top ticker showing the latest posts
+* Dismissible by user
+* Smooth transitions & minimal JS
 
-Code Highlighting: Beautifully styled pre/code blocks (Dark Slate theme).
+### 🔍 Full-Screen Search Overlay
 
-Copy to Clipboard: Automatic copy button added to all code blocks via JavaScript.
+* Triggered via header button
+* Blurry background using `backdrop-filter`
+* Fully responsive and keyboard friendly
 
-Linux-Style Typography: Optional "Linux Hardened" font style for the site title.
+### 💻 Developer-Focused Enhancements
 
-📱 Fully Responsive:
+* Beautifully styled `pre`/`code` blocks
+* Automatic **Copy to Clipboard** button on every code block
+* Optional “Linux Hardened” style typography for the logo & titles
 
-Stacked header layout on mobile.
+### 📱 Fully Responsive Layout
 
-Touch-optimized navigation and buttons.
+* Stacked mobile header
+* Touch-optimized navigation
+* Adaptive typography and spacing
 
-🎨 Flexible Layouts:
+### 🎨 Flexible Layouts
 
-Homepage: Full-width layout, strictly limited to 10 posts per page.
+* **Homepage:** Full width, fixed 10 posts per page
+* **Single Posts:** Sidebar only if widgets exist
+* **Pages:** Full-width clean canvas
 
-Single Posts: Optional Sidebar (only appears if widgets are added).
+### 🧩 Widget Areas
 
-Pages: Full-width canvas for static content.
+* **Header Right** – Ideal for social links or buttons
+* **Sidebar** – Shown only on single posts
+* **Footer Widgets** – Three widgetized columns
 
-🧩 Widget Areas:
+---
 
-Header Right: Perfect for social icons or extra links.
+## 🛠️ **Installation**
 
-Sidebar: Displayed only on single posts (smart conditional loading).
+### **Option 1: Git Clone (Recommended for Developers)**
 
-Footer: 3-column widgetized footer area.
+Navigate to your theme directory:
 
-🛠️ Installation
-
-Option 1: Git Clone (Recommended for Developers)
-
-Navigate to your WordPress themes directory:
-
+```bash
 cd /path/to/wordpress/wp-content/themes/
-
+```
 
 Clone the repository:
 
-git clone [https://github.com/yourusername/amplite.git](https://github.com/yourusername/amplite.git)
+```bash
+git clone https://github.com/yourusername/amplite.git
+```
 
+Then go to **WordPress Dashboard → Appearance → Themes** and activate **AMPLite**.
 
-Log in to your WordPress Dashboard, go to Appearance > Themes, and activate AMPLite.
+---
 
-Option 2: Manual Upload
+### **Option 2: Manual Upload**
 
-Download the repository as a ZIP file.
+1. Download the ZIP file
+2. Go to **Dashboard → Appearance → Themes → Add New**
+3. Click **Upload Theme**
+4. Upload the ZIP → Install → Activate
 
-Go to your WordPress Dashboard > Appearance > Themes > Add New > Upload Theme.
+---
 
-Upload the ZIP file and click Install Now.
+## ⚙️ **Configuration**
 
-Activate the theme.
+### 1. **Site Logo & Title**
 
-⚙️ Configuration
+Go to:
 
-1. Site Logo & Title
+> **Appearance → Customize → Site Identity**
 
-Go to Appearance > Customize > Site Identity.
+* Upload a logo
+* Or use Site Title (uses Linux Hardened styled font by default)
 
-Upload a logo (flexible size supported) or use the Site Title.
+---
 
-Tip: The Site Title uses a custom "Linux Hardened" font style by default.
+### 2. **Menus**
 
-2. Menus
+Go to:
 
-Go to Appearance > Menus.
+> **Appearance → Menus**
 
-Create a new menu and assign it to the Primary Menu location.
+* Create a menu
+* Assign it to **Primary Menu**
 
-3. Sidebar (Optional)
+---
 
-To Show Sidebar: Go to Appearance > Widgets and add widgets to the Sidebar area. It will automatically appear on Single Posts.
+### 3. **Sidebar (Optional)**
 
-To Hide Sidebar: Remove all widgets from the Sidebar area. Single posts will automatically expand to full width.
+| Want Sidebar? | Action                              |
+| ------------- | ----------------------------------- |
+| **Yes**       | Add widgets to **Sidebar** area     |
+| **No**        | Remove all widgets from **Sidebar** |
 
-4. Header & Footer Widgets
+Sidebar shows only on single posts.
 
-Header Right: Add widgets here to display them to the right of the navigation bar.
+---
 
-Footer Columns: Add widgets to Footer Column 1, 2, or 3 to populate the footer area.
+### 4. **Header & Footer Widgets**
 
-📂 File Structure
+* **Header Right** → For icons/buttons
+* **Footer Columns 1, 2, 3** → For footer widgets
 
+---
+
+## 📂 **File Structure**
+
+```plaintext
 amplite/
 ├── style.css           # Main stylesheet (Tailwind-like utilities & custom styles)
 ├── functions.php       # Theme logic, widget registration, post limits
-├── header.php          # HTML head, Ticker, Navigation, Search Overlay
-├── footer.php          # Footer widgets, JS scripts (Dark mode, Copy to Clipboard)
-├── index.php           # Homepage template (Full width, 10 posts limit)
-├── single.php          # Single post template (With optional sidebar)
-└── page.php            # Static page template (Full width)
+├── header.php          # Head, ticker, navigation, search overlay
+├── footer.php          # Footer widgets & JS (dark mode, clipboard)
+├── index.php           # Homepage (full width, 10 posts limit)
+├── single.php          # Single posts (optional sidebar)
+└── page.php            # Pages (full-width)
+```
 
+---
 
-🐛 Troubleshooting
+## 🐛 **Troubleshooting**
 
-Search Overlay looks broken?
-Ensure your browser cache is cleared. The overlay uses specific fixed positioning and backdrop-filter styles defined in style.css.
+### **Search overlay looks broken?**
 
-Sidebar not showing?
-The sidebar is strictly conditional. It only renders if widgets are actually added to the "Sidebar" widget area in the backend.
+Clear browser cache — the overlay uses:
 
-📄 License
+* `position: fixed`
+* `backdrop-filter`
+* custom z-index stack
 
-This theme is open-source and licensed under the [GPLv2 or later](
+### **Sidebar not appearing?**
+
+Sidebar loads **only if widgets exist** in the Sidebar widget area.
+
+---
+
+## 📄 **License**
+
+This theme is open-source and licensed under **GPLv2 or later**.
+
+---
+
+If you want, I can also:
+
+✅ Generate the **full theme ZIP**
+✅ Write the `functions.php`, `style.css`, or JS files
+✅ Add GitHub-ready `README.md`
+✅ Add screenshots / badges / demo site link
+
+Would you like the **full theme source code** next?
