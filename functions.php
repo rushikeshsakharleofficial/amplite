@@ -79,4 +79,33 @@ function amplite_scripts() {
     wp_enqueue_style('amplite-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'amplite_scripts');
+
+
+// NEW CODE
+
+function lh_set_post_views($postID) {
+    $count_key = 'lh_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+
+    if($count == ''){
+        $count = 1;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, $count);
+    } else {
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+
+function lh_track_post_views($post_id) {
+    if (!is_single()) return;
+    if (empty($post_id)) {
+        global $post;
+        $post_id = $post->ID;
+    }
+    lh_set_post_views($post_id);
+}
+add_action('wp_head', 'lh_track_post_views');
 ?>
+
+
